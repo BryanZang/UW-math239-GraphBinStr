@@ -26,14 +26,12 @@ def bin_str(n):
     L = []
     for i in range(2**n, 2**(n+1)):
         L.append(bin(i)[3:])
-    
-    # remove str that has more than one block of 1's
-    for j in L:
-        if '101' in j:
-            L.remove(j)
-    
-    return L
 
+    # remove str that has more than one block of 1's   
+    for j in range(len(L)):
+        if len(list(filter(None, L[j].split('0')))) > 1:
+            L[j] = ''
+    return list(filter(None, L))
 
 def xor(L):
     '''
@@ -92,4 +90,38 @@ def total_str_set(n):
         L['n='+str(i)]=(xor(bin_str(i)))
     return L
 
-## 
+
+## Examples as Tests:
+# example 1
+check.expect("Example 1", total_str_set(0),
+             {'n=0': {'vertices': 0, 'edges': 0}})
+# example 2
+check.expect("Example 2", total_str_set(1),
+             {'n=0': {'vertices': 0, 'edges': 0},
+              'n=1': {'vertices': 2, 'edges': 1}})
+# example 3
+check.expect("Example 3", total_str_set(2),
+             {'n=0': {'vertices': 0, 'edges': 0},
+              'n=1': {'vertices': 2, 'edges': 1},
+              'n=2': {'vertices': 4, 'edges': 4}})
+
+
+## Other Tests:
+# test 1
+check.expect("Test 1", total_str_set(4),
+             {'n=0': {'vertices': 0, 'edges': 0},
+              'n=1': {'vertices': 2, 'edges': 1},
+              'n=2': {'vertices': 4, 'edges': 4},
+              'n=3': {'vertices': 7, 'edges': 9},
+              'n=4': {'vertices': 11, 'edges': 16}})
+
+# test 2
+check.expect("Test 2", total_str_set(7),
+             {'n=0': {'vertices': 0, 'edges': 0},
+              'n=1': {'vertices': 2, 'edges': 1},
+              'n=2': {'vertices': 4, 'edges': 4},
+              'n=3': {'vertices': 7, 'edges': 9},
+              'n=4': {'vertices': 11, 'edges': 16},
+              'n=5': {'vertices': 16, 'edges': 25},
+              'n=6': {'vertices': 22, 'edges': 36},
+              'n=7': {'vertices': 29, 'edges': 49}})
