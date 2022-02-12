@@ -6,6 +6,7 @@
 ##=======================================================
 ##
 
+import check
 
 def bin_str(n):
     '''
@@ -90,3 +91,5 @@ def total_str_set(n):
     for i in range(n+1):
         L['n='+str(i)]=(xor(bin_str(i)))
     return L
+
+## 
