@@ -33,6 +33,7 @@ def bin_str(n):
             L[j] = ''
     return list(filter(None, L))
 
+
 def xor(L):
     '''
     consumes a list of binary strings and returns a dictionary of
