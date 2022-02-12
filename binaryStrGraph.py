@@ -126,3 +126,4 @@ check.expect("Test 2", total_str_set(7),
               'n=5': {'vertices': 16, 'edges': 25},
               'n=6': {'vertices': 22, 'edges': 36},
               'n=7': {'vertices': 29, 'edges': 49}})
+
